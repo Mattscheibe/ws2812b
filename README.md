@@ -1,8 +1,9 @@
 # ws2812b
-A library for driving WS2812b based (aka Neopixel) LED strands on an AVR controller or Arduino-like board. Allows for convenient setup of matrix-like displays. Uses standard addressing and standard color coding like in image processing.
 
-For code interchange, this library also exists for C++ (Arduino and Raspberry Pi).
+A library for driving WS2812b based (aka Neopixel) LED strands on an AVR controller or Arduino-like board. Allows for convenient setup of matrix-like displays. Uses standard addressing and standard color coding like in image processing. For code interchange, this library also exists for C++ (Arduino and Raspberry Pi).
+
 ---
+
 Data transfer routine is taken from library https://github.com/cpldcpu/light_ws2812.
 User interface is simplified and unified for all platforms.
 
@@ -30,50 +31,62 @@ User interface is simplified and unified for all platforms.
 ---
 
 ## Commands
-'''initLEDs();'''
+**initLEDs();**
 
-attach strand to controller<br>please add this at the beginning of your program
+* attach strand to controller<br>please add this at the beginning of your program
 
-'''setR(row,column,color);'''
+**setR(row,column,color);**
 
-set red value for pixel at matrix position row,column<br>column should be zero for single linear strands<br>color ranges from 0x00 to 0xFF
+* set red value for pixel at matrix position row,column
+* column should be zero for single linear strands
+* color ranges from 0x00 to 0xFF
 
-'''setG(row,column,color);'''
+**setG(row,column,color);**
 
-dito for green value
+* dito for green value
 
-'''setB(row,column,color);'''
+**setB(row,column,color);**
 
-dito for blue value
+* dito for blue value
 
-'''setRGB(row,column,fullcolor);'''
+**setRGB(row,column,fullcolor);**
 
-set all three color values at once<br>full color ranges from 0x000000 to 0xFFFFFF<br>values can be taken from image processing or color<br>picker tools
+* set all three color values at once
+* full color ranges from 0x000000 to 0xFFFFFF
+* values can be taken from image processing or color picker tools
 
-'''getR(row,column);'''
+**getR(row,column);**
 
-read-out function for red channel of addressed pixel<br>possible range from 0x00...0xFF
+* read-out function for red channel of addressed pixel
+* possible range from 0x00...0xFF
 
-'''getG(row,column);'''
+**getG(row,column);**
 
-dito for green channel
+* dito for green channel
 
-'''getB(row,column);'''
+**getB(row,column);**
 
-dito for blue channel
+* dito for blue channel
 
-'''getRGB(row,column);'''
+**getRGB(row,column);**
 
-read-out function for full color value of addressed pixel<br>possible range from 0x000000 to 0xFFFFFF
+* read-out function for full color value of addressed pixel
+* possible range from 0x000000 to 0xFFFFFF
 
-'''showLEDs();'''
+**showLEDs();**
 
-will display all pixels (with the colors that have been set before)
+* will display all pixels (with the colors that have been set before)
 
-'''clearLEDs();'''
+**clearLEDs();**
 
-reset all color values to 0 and display a "blank screen"
+* reset all color values to 0 and display a "blank screen"
 
-'''setMaxBrightness(maxValue);'''
+**setMaxBrightness(maxValue);**
 
-used for dimming (good to the eyes!)<br>maxValue ranges from 0x00 (full dimming) to 0xFF (no dimming)<br>will usually be called once at the beginning of the program<br>but can also be called several times for special effects<br>good values for maxValue while prototyping are 3...10<br>will change intensity of display by limiting color resolution<br>will effect all subsequent calls to showLEDs()
+* used for dimming (good to the eyes!)
+* maxValue ranges from 0x00 (full dimming) to 0xFF (no dimming)
+* will usually be called once at the beginning of the program
+* but can also be called several times for special effects
+* good values for maxValue while prototyping are 3...10
+* will change intensity of display by limiting color resolution
+* will effect all subsequent calls to showLEDs()
