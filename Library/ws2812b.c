@@ -5,9 +5,9 @@
 *
 * Author: Chris (Mattscheibenpost@gmail.com)
 *
-* June 24th, 2015 V1.0a Initial Version
+* January 10th, 2016 V1.0a Initial Version
 *
-* License: GNU GPL v2 (see License.txt)
+* License: GNU GPL v2 (see file LICENSE)
 *
 * Edit ws2812b_config.h for setting up wiring scheme and data output pin.
 */
