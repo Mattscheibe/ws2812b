@@ -31,62 +31,42 @@ User interface is simplified and unified for all platforms.
 ---
 
 ## Commands
-**initLEDs();**
 
-* attach strand to controller<br>please add this at the beginning of your program
+```
+initLEDs();                   // attach strand to controller
+                              // please add this at the beginning of your program
 
-**setR(row,column,color);**
+setR(row,column,color);       // set red value for pixel at matrix position row,column
+                              // column should be zero for single linear strands
+                              // color ranges from 0x00 to 0xFF
 
-* set red value for pixel at matrix position row,column
-* column should be zero for single linear strands
-* color ranges from 0x00 to 0xFF
+setG(row,column,color);       // dito for green value
 
-**setG(row,column,color);**
+setB(row,column,color);       // dito for blue value
 
-* dito for green value
+setRGB(row,column,fullcolor); // set all three color values at once
+                              // full color ranges from 0x000000 to 0xFFFFFF
+                              // values can be taken from image processing or color picker tools
 
-**setB(row,column,color);**
+getR(row,column);             // read-out function for red channel of addressed pixel
+                              // possible range from 0x00...0xFF
 
-* dito for blue value
+getG(row,column);             // dito for green channel
 
-**setRGB(row,column,fullcolor);**
+getB(row,column);             // dito for blue channel
 
-* set all three color values at once
-* full color ranges from 0x000000 to 0xFFFFFF
-* values can be taken from image processing or color picker tools
+getRGB(row,column);           // read-out function for full color value of addressed pixel
+                              // possible range from 0x000000 to 0xFFFFFF
 
-**getR(row,column);**
+showLEDs();                   // will display all pixels (with the colors that have been set before)
 
-* read-out function for red channel of addressed pixel
-* possible range from 0x00...0xFF
+clearLEDs();                  // reset all color values to 0 and display a "blank screen"
 
-**getG(row,column);**
-
-* dito for green channel
-
-**getB(row,column);**
-
-* dito for blue channel
-
-**getRGB(row,column);**
-
-* read-out function for full color value of addressed pixel
-* possible range from 0x000000 to 0xFFFFFF
-
-**showLEDs();**
-
-* will display all pixels (with the colors that have been set before)
-
-**clearLEDs();**
-
-* reset all color values to 0 and display a "blank screen"
-
-**setMaxBrightness(maxValue);**
-
-* used for dimming (good to the eyes!)
-* maxValue ranges from 0x00 (full dimming) to 0xFF (no dimming)
-* will usually be called once at the beginning of the program
-* but can also be called several times for special effects
-* good values for maxValue while prototyping are 3...10
-* will change intensity of display by limiting color resolution
-* will effect all subsequent calls to showLEDs()
+setMaxBrightness(maxValue);   // used for dimming (good to the eyes!)
+                              // maxValue ranges from 0x00 (full dimming) to 0xFF (no dimming)
+                              // will usually be called once at the beginning of the program 
+                              // but can also be called several times for special effects
+                              // good values for maxValue while prototyping are 3...10
+                              // will change intensity of display by limiting color resolution
+                              // will effect all subsequent calls to showLEDs()
+```
