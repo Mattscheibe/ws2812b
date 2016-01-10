@@ -1,0 +1,80 @@
+ws2812b Wiring
+==============
+
+Choosing scheme:
+----------------
+
+For linear wiring (one single linear strand) just connect its Din and use width as length of strand
+(height as 1).
+Note that if using only one single LED, width has exceptionally to be 2.
+
+For a 2D matrix wiring, all sorts of starting points and interconnections of strands are possible:
+
+                  o = input to strand
+
+          o  _      o          ^  _  o         o
+ Type  0: |_| |  1: |/|/|   2: |_| |_|  3: |\|\|
+              v         v                  v
+
+ Type  4: o-     5: o-      6:  -o      7: -o
+            |        /         |           \ 
+           -         -          -          - 
+          |          /           |         \ 
+           ->        ->        <-         <- 
+
+           _  ^         ^      ^  _        ^
+ Type  8: | |_|  9: |\|\|  10: |_| |   11: |/|/|
+          o         o              o           o
+
+ Type 12:  ->   13: ->     14: <-      15: <-
+          |         \            |          /
+           -        -           -           -
+            |       \          |            /
+          o-       o-           -o          -o
+
+If wiring scheme is properly chosen, all LEDs are adressable by their row and column index.
+
+Addressing always has the form row,column (so it is always row first, like in image processing).
+
+Addressing LEDs:
+----------------
+
+For example, to set LED at position indicated with "*"
+
+  0  1  2  3  4  5  6  7  8  9 10
+0 -  -  -  -  -  -  -  -  -  -  -
+1 -  -  -  -  -  -  -  -  -  -  -
+2 -  -  -  -  -  -  -  -  -  -  -
+3 -  -  -  -  -  -  -  -  -  -  -
+4 -  -  -  -  -  -  -  -  -  -  -
+5 -  -  *  -  -  -  -  -  -  -  -
+6 -  -  -  -  -  -  -  -  -  -  -
+7 -  -  -  -  -  -  -  -  -  -  -
+8 -  -  -  -  -  -  -  -  -  -  -
+
+to color "yellow", type:
+
+setRGB(5,2,0xFFFF00); // yellow is: red and green and no blue (deliberately take colors from image processing or color picker tool)
+
+Several such commands might be used before a
+
+showLEDs();
+
+will then transfer these settings to the matrix and have LEDs light up.
+
+Current protection:
+-------------------
+
+A resistor of 220...470 ohms should be used to connect controller output pin and Din input pin on strand, mounted near strand:
+
+Arduino/AVR           WS2812B LED strand
+
++5V ---------------------> 5V (+)
+
+any pin ------|220ohms|--> Din
+
+GND ---------------------> GND
+
+Connect Dout at end of strand to Din at next strand according to wiring scheme chosen.
+
+A capacitor of 100uF should be added between 5V(+) and GND near strand.

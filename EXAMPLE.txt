@@ -1,0 +1,41 @@
+ws2812b example program
+=======================
+
+This example will have one WS2812B LED on PB4 blinking.
+
+a. in ws2812b_config.h set:
+
+#define ws2812b_PORT  B
+#define ws2812b_Pin   4
+#define WIDTH         2 // hast to be 2 even if only one LED is used -- see comments in ws2812b.h
+#define HEIGHT        1
+#define TYPE          1
+
+in main.c:
+
+#include "ws812b.h" // include this library (which will also allow for _delay_ms to be used)
+void main() {
+  initLEDs();           // initialisation
+  setMaxBrightness(10); // relatively low, good for the eyes
+  // repeat endlessly for blinking:
+  while (1) {         
+    setRGB(0,0,0xFF9922);showLEDs(); // "on" -  some color
+    _delay_ms(200);                  // pause a little
+    setRGB(0,0,0x000000);showLEDs(); // "off" - might as well use clearLEDs();
+    _delay_ms(500);                  // pause a little more
+}
+
+----------------------------------------------------------------------------------
+
+If using this program on an arduino board (instead of on a bare AVR
+controller), wire to corresponding arduino port pin as indicated below:
+
+Port pin defined | maps to Digital Pin on Arduino Board | valid for Arduino (compatible) Board (examples)
+
+      PB4        |                 D12                  |     Nano, Uno
+  
+      PB4        |                 D8                   |     Leonardo, ProMicro
+  
+----------------------------------------------------------------------------------
+
+Provided Makefile is pre-set for an Arduino Nano.

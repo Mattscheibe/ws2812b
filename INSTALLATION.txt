@@ -1,0 +1,7 @@
+ws2812b Installation
+====================
+
+No special installation is needed. Just copy file ws2812b.h, ws2812b.c and
+ws2812b_config.h to a new directory. If you do not want to provide your own
+Makefile, also copy provided Makefile to this directory.
+You can put your own files there now and start writing your program.

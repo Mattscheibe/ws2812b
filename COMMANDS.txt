@@ -1,0 +1,52 @@
+ws2812b Command Reference
+=========================
+
+Including this library
+~~~~~~~~~~~~~~~~~~~~~~
+
+  #include "ws2812b.h"
+
+
+Initialisation - needs to be done at the beginning of every programming using this library, maybe as first command in main() routine
+~~~~~~~~~~~~~~
+
+  initLEDs(); // but do not forget to configure your setup in ws2812b_config.h
+
+
+Commands - can use standard color values, e.g. as indicated by image processing or color picker tools, and standard indexing
+~~~~~~~~
+
+a) Setting colors:
+
+  setR(row,column,color); // color from 0x00 to 0xFF, for red
+  setG(row,column,color); // dito for green
+  setB(row,column,color); // dito for blue
+
+  setRGB(row,column,color); // color from 0x000000 to 0xFFFFFF using scheme 0xrrggbb, will set overall color of pixel
+
+b) Getting color values:
+
+  getR(row,column); // return color value for red channel of pixel addressed, range 0x00 to 0xFF
+  getG(row,column); // dito for green
+  getB(row,column); // dito for blue
+
+  getRGB(row,column); // dito for overall color value, range 0x000000 to 0xFFFFFF using scheme 0xrrggbb
+
+c) Display all pixels with color values set before:
+
+  showLEDs();
+
+d) Turn off all pixels:
+
+  clearLEDs();
+  
+  (will both set and display all pixels as "black")
+
+e) Adjust brightness:
+
+  setMaxBrightness(maxIntensity); // will limit colors to range 0 to maxIntensity; maxIntensity may be any between 0x00 and 0xFF
+
+If set to 0xFF, all color values will be displayed unchanged. In all other cases, colors will be dimmed to fit into the range.
+Lower intensities draw less current. This may be helpful in case of longer strands and weaker power supplies, or while prototyping.
+
+setMaxBrightness() will set variable maxBrightnessLEDs.

@@ -1,0 +1,19 @@
+w21812b development of a new program
+====================================
+
+An appropriate Makefile is added in Makefile_Template. Edit it to set up
+your favorite editor.
+
+1. Copy this Makefile to the directory in which you want to write the new program.
+
+2. Type "make config" and set wich port pin and which wiring scheme is being used.
+
+3. Type "make make" and set file names of your project. Repeat this step if new files happen to be added.
+
+4. Type "make edit" and edit your program.
+
+5. If you add more files to your project either edit them by hand or add editing targets for them to the make file.
+
+6. Test your program by typing "make" (compilation only) or "make prog" (compilation and transfering to chip).
+
+Repeat steps 4. (and 5.) and 6. until finished.
